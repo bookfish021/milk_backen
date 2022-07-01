@@ -1,0 +1,20 @@
+{
+  "name": "milk_backend",
+  "version": "1.0.0",
+  "description": "handle review of milk",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bookfish021/milk_backend.git"
+  },
+  "author": "Ivan, Alice",
+  "bugs": {
+    "url": "https://github.com/bookfish021/milk_backend/issues"
+  },
+  "homepage": "https://github.com/bookfish021/milk_backend#readme",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}
