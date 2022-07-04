@@ -56,6 +56,29 @@ const userController = {
       res.status(400).json({ message: `Failed to list users, ${error}` });
     }
   },
+  async updatePassword(req, res) {
+    const rule = {
+      newPassword: {
+        type: 'string',
+        allowEmpty: false,
+        min: 4,
+      },
+      oldPassword: {
+        type: 'string',
+        allowEmpty: false,
+      },
+    };
+
+    try {
+      validator.validate(req.body, rule);
+      await service.user.updatePassword(req.body, req.user.id);
+      logger.info('[User Controller] Update password successfully');
+      res.json({ success: true });
+    } catch (error) {
+      logger.error('[User Controller] Failed to update user password:', error);
+      res.status(400).json({ message: `Failed to update user password, ${error}` });
+    }
+  },
 };
 
 export default userController;

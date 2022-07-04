@@ -6,4 +6,6 @@ const userRouter = express.Router();
 
 userRouter.post('/register', controller.user.register);
 userRouter.post('/list', controller.user.list);
+userRouter.put('/update', controller.user.updatePassword);
+
 export default userRouter;
