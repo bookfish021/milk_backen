@@ -71,7 +71,7 @@ const userController = {
 
     try {
       validator.validate(req.body, rule);
-      await service.user.updatePassword(req.body, req.user.id);
+      await service.user.updatePassword(req.body, req.user._id);
       logger.info('[User Controller] Update password successfully');
       res.json({ success: true });
     } catch (error) {
