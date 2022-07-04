@@ -1,3 +1,11 @@
 {
-  "extends": "./node_modules/gts/"
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "extends": "airbnb-base",
+  "rules": {
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "max-len": ["off"]
+  }
 }
