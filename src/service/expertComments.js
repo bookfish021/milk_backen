@@ -26,14 +26,14 @@ const expeertCommentsService = {
   },
   async update(params, userID) {
     try {
-      const expertComment = await model.expertComments.findById(params.expertCommentID).lean();
+      const expertComment = await model.expertComments.findById(params._id).lean();
       // if comment not exists
       if (!expertComment) {
         logger.error('[Expert Comments Service] Expert comment not found');
         throw new Error('Error expert comment not found');
       }
       // find expert id and update
-      const filter = { _id: params.expertCommentID, userID };
+      const filter = { _id: params._id, userID };
       const updateParams = params;
       delete updateParams.expertCommentID;
       const res = await model.expertComments.findOneAndUpdate(filter, updateParams, {

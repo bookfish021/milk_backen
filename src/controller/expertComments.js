@@ -41,7 +41,7 @@ const expertCommentsController = {
       req.body.date = new Date(req.body.date);
       validator.validate(req.body, expertCommentsRule);
       validator.validate(req.body, {
-        expertCommentID: {
+        _id: {
           type: 'string',
         },
       });
