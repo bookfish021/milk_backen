@@ -44,9 +44,10 @@ const userService = {
       const hashdPassword = await argon2.hash(params.newPassword);
       const filter = { _id: id };
       const update = { password: hashdPassword };
-      await model.users.findOneAndUpdate(filter, update, {
+      const res = await model.users.findOneAndUpdate(filter, update, {
         new: true,
       });
+      return res;
     } catch (error) {
       logger.error('[User Service] Failed to update user password:', error);
       throw new Error(`Failed to update user password, ${error}`);

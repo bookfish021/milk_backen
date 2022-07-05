@@ -10,7 +10,7 @@ const expertCommentsSchema = new mongoose.Schema({
     required: true,
   },
   userID: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
     required: true,
   },
   color: {
