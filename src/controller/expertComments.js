@@ -1,7 +1,7 @@
 import validator from '../../libs/validator';
 import logger from '../../libs/logger';
 import service from '../service';
-import expertCommentsRule from './validationRule';
+import { expertCommentsRule } from './validationRule';
 
 const expertCommentsController = {
   async create(req, res) {

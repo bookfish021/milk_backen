@@ -9,104 +9,216 @@ const expertCommentsRule = {
   },
   color: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   score: {
     type: 'number',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   aromaScore: {
     type: 'number',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   flavorScore: {
     type: 'number',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   sweetnessScore: {
     type: 'number',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   bodyScore: {
     type: 'number',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   textureScore: {
     type: 'number',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   afterTasteScore: {
     type: 'number',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   balanceScore: {
     type: 'number',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   defectScore: {
     type: 'number',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   aromaPositive: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   flavorPositive: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   sweetnessPositive: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   bodyPositive: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   texturePositive: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   afterTastePositive: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   balancePositive: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   aromaNegative: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   flavorNegative: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   sweetnessNegative: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   bodyNegative: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   textureNegative: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   afterTasteNegative: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   balanceNegative: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
   defectNegative: {
     type: 'string',
-    allowEmpty: true,
+    allowEmpty: false,
   },
 };
 
-export default expertCommentsRule;
+const normalCommentsRule = {
+  productName: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  date: {
+    type: 'date',
+    allowEmpty: false,
+  },
+  color: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  score: {
+    type: 'number',
+    allowEmpty: false,
+  },
+  aromaScore: {
+    type: 'number',
+    allowEmpty: false,
+  },
+  flavorScore: {
+    type: 'number',
+    allowEmpty: false,
+  },
+  sweetnessScore: {
+    type: 'number',
+    allowEmpty: false,
+  },
+  bodyScore: {
+    type: 'number',
+    allowEmpty: false,
+  },
+  textureScore: {
+    type: 'number',
+    allowEmpty: false,
+  },
+  afterTasteScore: {
+    type: 'number',
+    allowEmpty: false,
+  },
+  balanceScore: {
+    type: 'number',
+    allowEmpty: false,
+  },
+  defectScore: {
+    type: 'number',
+    allowEmpty: false,
+  },
+  aromaPositive: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  flavorPositive: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  sweetnessPositive: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  bodyPositive: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  texturePositive: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  afterTastePositive: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  balancePositive: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  aromaNegative: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  flavorNegative: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  sweetnessNegative: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  bodyNegative: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  textureNegative: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  afterTasteNegative: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  balanceNegative: {
+    type: 'string',
+    allowEmpty: false,
+  },
+  defectNegative: {
+    type: 'string',
+    allowEmpty: false,
+  },
+};
+
+module.experts = expertCommentsRule;
+module.exports = normalCommentsRule;
