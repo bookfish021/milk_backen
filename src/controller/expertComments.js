@@ -6,11 +6,9 @@ import expertCommentsRule from './validationRule';
 const expertCommentsController = {
   async create(req, res) {
     try {
-      // change date type
-      logger.info(req.body.userID);
-      logger.info(typeof req.body.userID);
+      req.body.date = new Date(req.body.date);
       validator.validate(req.body, expertCommentsRule);
-      await service.expertComments.create(req);
+      await service.expertComments.create(req.body, req.user._id);
       logger.info('[Expert Comments Controller] Create expert comments successfully');
       res.json({ success: true });
     } catch (error) {
@@ -40,8 +38,14 @@ const expertCommentsController = {
   },
   async update(req, res) {
     try {
+      req.body.date = new Date(req.body.date);
       validator.validate(req.body, expertCommentsRule);
-      await service.expertComments.update(req.body, req.expertComments._id);
+      validator.validate(req.body, {
+        expertCommentID: {
+          type: 'string',
+        },
+      });
+      await service.expertComments.update(req.body, req.user._id);
       logger.info('[Expert Comments Controller] Update expert comments successfully');
       res.json({ success: true });
     } catch (error) {

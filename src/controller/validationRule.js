@@ -4,11 +4,7 @@ const expertCommentsRule = {
     allowEmpty: false,
   },
   date: {
-    type: 'string',
-    allowEmpty: false,
-  },
-  userID: {
-    type: 'string',
+    type: 'date',
     allowEmpty: false,
   },
   color: {
