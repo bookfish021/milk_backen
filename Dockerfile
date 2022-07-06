@@ -1,7 +1,11 @@
-FROM node:16.3.0-alpine as BASE
+FROM node:latest as BASE
 
-COPY . /src
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-RUN npm install
+COPY package.json /usr/src/app/
+RUN yarn install && yarn cache clean
 
-CMD docker-compose up -d milk_backend
+COPY . /usr/src/app
+
+CMD ["docker-compose", "up", "-d", "milk_backend"]
