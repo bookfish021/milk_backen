@@ -8,4 +8,4 @@ RUN yarn install && yarn cache clean
 
 COPY . /usr/src/app
 
-CMD ["docker-compose", "up", "-d", "milk_backend"]
+CMD ["npm", "run", "dev"]
