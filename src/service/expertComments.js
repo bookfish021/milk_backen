@@ -1,7 +1,7 @@
 import model from '../models';
 import logger from '../../libs/logger';
 
-const expeertCommentsService = {
+const expertCommentsService = {
   async create(params, userID) {
     try {
       const savedParams = params;
@@ -35,7 +35,7 @@ const expeertCommentsService = {
       // find expert id and update
       const filter = { _id: params._id, userID };
       const updateParams = params;
-      delete updateParams.expertCommentID;
+      delete updateParams._id;
       const res = await model.expertComments.findOneAndUpdate(filter, updateParams, {
         new: true,
       });
@@ -47,4 +47,4 @@ const expeertCommentsService = {
   },
 };
 
-export default expeertCommentsService;
+export default expertCommentsService;
