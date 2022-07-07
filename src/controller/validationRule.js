@@ -220,5 +220,7 @@ const normalCommentsRule = {
   },
 };
 
-module.experts = expertCommentsRule;
-module.exports = normalCommentsRule;
+export {
+  expertCommentsRule,
+  normalCommentsRule,
+};
