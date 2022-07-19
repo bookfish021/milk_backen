@@ -14,7 +14,7 @@ const normalCommentsSchema = new mongoose.Schema({
     required: true,
   },
   color: {
-    type: String,
+    type: Number,
     required: true,
   },
   score: {
@@ -41,7 +41,7 @@ const normalCommentsSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  afterTasteScore: {
+  aftertasteScore: {
     type: Number,
     required: true,
   },
@@ -73,7 +73,7 @@ const normalCommentsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  afterTastePositive: {
+  aftertastePositive: {
     type: String,
     required: true,
   },
@@ -101,7 +101,7 @@ const normalCommentsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  afterTasteNegative: {
+  aftertasteNegative: {
     type: String,
     required: true,
   },
