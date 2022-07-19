@@ -14,6 +14,8 @@ const connectMongo = async () => {
 
   const uri = `${mongoScheme}://${mongoUsername}:${mongoPassword}@${mongoHost}:${mongoPort}/${mongoDatabase}?authSource=admin`;
 
+  logger.info(`uri: ${uri}`);
+
   mongoose.connection.on('connected', () => {
     logger.info('MongoDB connection established.');
   });

@@ -14,10 +14,18 @@ const usersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: false,
+  },
   role: {
     type: String,
     enum: ['expert', 'normal', 'admin'],
     default: 'normal',
+  },
+  store: {
+    type: String,
+    required: false,
   },
 }, {
   strict: 'throw',

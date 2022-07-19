@@ -24,6 +24,14 @@ const userController = {
         type: 'string',
         enum: ['expert', 'normal'],
       },
+      store: {
+        type: 'string',
+        allowEmpty: true,
+      },
+      email: {
+        type: 'string',
+        allowEmpty: true,
+      },
     };
 
     try {

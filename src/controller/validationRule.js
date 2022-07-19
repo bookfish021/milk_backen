@@ -8,7 +8,7 @@ const expertCommentsRule = {
     allowEmpty: false,
   },
   color: {
-    type: 'string',
+    type: 'number',
     allowEmpty: false,
   },
   score: {
@@ -35,7 +35,7 @@ const expertCommentsRule = {
     type: 'number',
     allowEmpty: false,
   },
-  afterTasteScore: {
+  aftertasteScore: {
     type: 'number',
     allowEmpty: false,
   },
@@ -67,7 +67,7 @@ const expertCommentsRule = {
     type: 'string',
     allowEmpty: false,
   },
-  afterTastePositive: {
+  aftertastePositive: {
     type: 'string',
     allowEmpty: false,
   },
@@ -95,7 +95,7 @@ const expertCommentsRule = {
     type: 'string',
     allowEmpty: false,
   },
-  afterTasteNegative: {
+  aftertasteNegative: {
     type: 'string',
     allowEmpty: false,
   },
@@ -146,7 +146,7 @@ const normalCommentsRule = {
     type: 'number',
     allowEmpty: false,
   },
-  afterTasteScore: {
+  aftertasteScore: {
     type: 'number',
     allowEmpty: false,
   },
@@ -178,7 +178,7 @@ const normalCommentsRule = {
     type: 'string',
     allowEmpty: false,
   },
-  afterTastePositive: {
+  aftertastePositive: {
     type: 'string',
     allowEmpty: false,
   },
@@ -206,7 +206,7 @@ const normalCommentsRule = {
     type: 'string',
     allowEmpty: false,
   },
-  afterTasteNegative: {
+  aftertasteNegative: {
     type: 'string',
     allowEmpty: false,
   },
