@@ -21,7 +21,7 @@ const normalCommentsService = {
       return res;
     } catch (error) {
       logger.error('[Normal Comments Service] Failed to list normal comments', error);
-      throw new Error(`Failed to list normal comments to database, ${error}`);
+      throw new Error(`Failed to list normal comments in database, ${error}`);
     }
   },
   async update(params, userID) {

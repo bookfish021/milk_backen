@@ -1,11 +1,11 @@
-FROM node:16.13 as BASE
+FROM node:16.15-slim as BASE
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/src
 
-COPY package.json /usr/src/app/
+WORKDIR /usr/src
+
+COPY . /usr/src
+
 RUN npm install
-
-COPY . /usr/src/app
 
 CMD ["npm", "run", "dev"]

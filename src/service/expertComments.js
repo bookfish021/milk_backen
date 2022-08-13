@@ -10,7 +10,7 @@ const expertCommentsService = {
       logger.info('[Expert Comments Service] Create expert comment successfully');
       return res;
     } catch (error) {
-      logger.error('[Expert Comments Service] Failed to create expeert comments to database');
+      logger.error('[Expert Comments Service] Failed to create expert comments to database');
       throw new Error(`Failed to create expert comments to database, ${error}`);
     }
   },
