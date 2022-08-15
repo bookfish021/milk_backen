@@ -19,6 +19,8 @@ app.get('/', (req, res) => {
   res.json({ message: 'ok' });
 });
 
+app.use(express.static('history'));
+
 app.listen(process.env.PORT, () => {
   logger.info('Server is running');
 });
