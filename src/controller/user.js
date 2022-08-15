@@ -22,15 +22,21 @@ const userController = {
       },
       role: {
         type: 'string',
-        enum: ['expert', 'normal'],
+        enum: ['expert', 'normal', 'admin'],
       },
       store: {
         type: 'string',
         allowEmpty: true,
+        optional: true,
       },
       email: {
         type: 'string',
         allowEmpty: true,
+        optional: true,
+      },
+      verificationCode: {
+        type: 'string',
+        optional: true,
       },
     };
 

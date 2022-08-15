@@ -29,6 +29,7 @@ const usersSchema = new mongoose.Schema({
   },
 }, {
   strict: 'throw',
+  timestamps: true,
 });
 
-export default mongoose.model('Users', usersSchema);
+export default mongoose.model('users', usersSchema);

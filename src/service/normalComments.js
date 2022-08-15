@@ -1,10 +1,20 @@
 import model from '../models';
 import logger from '../../libs/logger';
 
+const checkEvent = async (event) => {
+  const res = await model.verificationCodes.findOne({ content: event });
+  if (res === null || res.usage !== 'event') {
+    throw new Error('Can not find the event in database');
+  }
+};
+
 const normalCommentsService = {
   async create(params, userID) {
     try {
       const savedParams = params;
+      if (savedParams.event !== '') {
+        await checkEvent(savedParams.event);
+      }
       savedParams.userID = userID;
       const res = await model.normalComments.create(savedParams);
       logger.info('[Normal Comments Service] Create normal comment successfully');
@@ -21,18 +31,11 @@ const normalCommentsService = {
       return res;
     } catch (error) {
       logger.error('[Normal Comments Service] Failed to list normal comments', error);
-      throw new Error(`Failed to list normal comments to database, ${error}`);
+      throw new Error(`Failed to list normal comments in database, ${error}`);
     }
   },
   async update(params, userID) {
     try {
-      const normalComment = await model.normalComments.findById(params._id).lean();
-      // if comment not exists
-      if (!normalComment) {
-        logger.error('[Normal Comments Service] Normal comment not found');
-        throw new Error('Error normal comment not found');
-      }
-      // find Normal id and update
       const filter = { _id: params._id, userID };
       const updateParams = params;
       delete updateParams._id;
