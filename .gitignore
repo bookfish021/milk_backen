@@ -5,3 +5,7 @@ node_modules
 .env*
 
 history/
+
+connect_mongo.cpython*
+
+__pycache__/
