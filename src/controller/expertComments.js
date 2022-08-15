@@ -28,12 +28,32 @@ const expertCommentsController = {
 
     try {
       validator.validate(req.body, rule);
-      const expertComments = await service.expertComments.list(req.body);
+      const expertComments = await service.expertComments.list(req.body, req.user._id);
       logger.info('[Expert Comments Controller] List expert comments successfully');
       res.json({ expertComments });
     } catch (error) {
       logger.error('[Expert Comments Contoller] Failed to list expert comments:', error);
       res.status(400).json({ message: `Failed to list expert comments, ${error}` });
+    }
+  },
+  async adminList(req, res) {
+    const rule = {
+      skip: {
+        type: 'number',
+      },
+      limit: {
+        type: 'number',
+      },
+    };
+
+    try {
+      validator.validate(req.body, rule);
+      const expertComments = await service.expertComments.adminList(req.body);
+      logger.info('[Expert Comments Controller] Admin list expert comments successfully');
+      res.json({ expertComments });
+    } catch (error) {
+      logger.error('[Expert Comments Contoller] Failed to do admin list expert comments:', error);
+      res.status(400).json({ message: `Failed to do admin list expert comments, ${error}` });
     }
   },
   async update(req, res) {

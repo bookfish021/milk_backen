@@ -24,14 +24,24 @@ const expertCommentsService = {
       throw new Error(`Failed to create expert comments to database, ${error}`);
     }
   },
-  async list(params) {
+  async list(params, userID) {
     try {
-      const res = await model.expertComments.find({}, null, { limit: params.limit, skip: params.skip });
+      const res = await model.expertComments.find({ userID }, null, { limit: params.limit, skip: params.skip });
       logger.info('[Expert Comments Service] List expert comments successfully');
       return res;
     } catch (error) {
       logger.error('[Expert Comments Service] Failed to list expert comments', error);
       throw new Error(`Failed to list expert comments to database, ${error}`);
+    }
+  },
+  async adminList(params) {
+    try {
+      const res = await model.expertComments.find({}, null, { limit: params.limit, skip: params.skip });
+      logger.info('[Expert Comments Service] Admin list expert comments successfully');
+      return res;
+    } catch (error) {
+      logger.error('[Expert Comments Service] Failed to do admin list expert comments', error);
+      throw new Error(`Failed to do admin list expert comments to database, ${error}`);
     }
   },
   async update(params, userID) {

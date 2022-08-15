@@ -10,6 +10,7 @@ const expertCommentsRule = {
   event: {
     type: 'string',
     optional: true,
+    allowEmpty: false,
   },
   color: {
     type: 'number',
@@ -128,7 +129,7 @@ const normalCommentsRule = {
     allowEmpty: false,
   },
   color: {
-    type: 'string',
+    type: 'number',
     allowEmpty: false,
   },
   score: {
