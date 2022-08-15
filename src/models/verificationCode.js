@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 
-const verificationCode = new mongoose.Schema({
+const verificationCodeSchema = new mongoose.Schema({
   content: {
     type: String,
     required: true,
+    unique: true,
   },
   usage: {
     type: String,
@@ -23,6 +24,6 @@ const verificationCode = new mongoose.Schema({
   timestamps: true,
 });
 
-verificationCode.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
+verificationCodeSchema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 
-export default mongoose.model('verificationCodes', verificationCode);
+export default mongoose.model('verificationCodes', verificationCodeSchema);

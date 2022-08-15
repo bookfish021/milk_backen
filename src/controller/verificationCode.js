@@ -17,7 +17,7 @@ const verificationCodeController = {
       },
       expireAt: {
         type: 'date',
-        allowEmpty: true,
+        optional: true,
       },
     };
     try {
@@ -26,7 +26,7 @@ const verificationCodeController = {
       logger.info('[Verification Code Controller] Create verification code successfully');
       res.json({ success: true });
     } catch (error) {
-      logger.error('[Verification Code Controller] Failed to ');
+      logger.error('[Verification Code Controller] Failed to create verification code');
       res.status(400).json({ message: `Failed to create verification code, ${error}` });
     }
   },

@@ -5,7 +5,7 @@ const adminMiddleware = async (req, res, next) => {
   if (user.role === 'admin') {
     next();
   } else {
-    logger.error('[Admin Middleware] Authorization failed, no payload information.');
+    logger.error('[Admin Middleware] Authorization failed, miss role information.');
     res.status(401).json({ message: 'Authorization failed.' });
   }
 };

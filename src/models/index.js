@@ -1,11 +1,11 @@
 import users from './users';
 import expertComments from './expertComments';
 import normalComments from './normalComments';
-import verificationCode from './verificationCode';
+import verificationCodes from './verificationCode';
 
 export default {
   users,
   expertComments,
   normalComments,
-  verificationCode,
+  verificationCodes,
 };

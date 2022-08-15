@@ -9,6 +9,10 @@ const expertCommentsSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  event: {
+    type: String,
+    required: false,
+  },
   userID: {
     type: mongoose.Schema.ObjectId,
     required: true,

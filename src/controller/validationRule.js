@@ -7,6 +7,10 @@ const expertCommentsRule = {
     type: 'date',
     allowEmpty: false,
   },
+  event: {
+    type: 'string',
+    optional: true,
+  },
   color: {
     type: 'number',
     allowEmpty: false,
@@ -117,6 +121,10 @@ const normalCommentsRule = {
   date: {
     type: 'date',
     allowEmpty: false,
+  },
+  event: {
+    type: 'string',
+    optional: true,
   },
   color: {
     type: 'string',

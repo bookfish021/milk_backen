@@ -13,7 +13,7 @@ services:
     restart: on-failure
     command: mongod
   milk-backend:
-    image: tsw303005/milk-backend:latest
+    image: milk-backend
     ports:
     - 80:8080
     depends_on:

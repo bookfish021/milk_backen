@@ -9,7 +9,7 @@ const verificationCode = {
       return res;
     } catch (error) {
       logger.error('[Verification Service] Failed to create verfication data to database');
-      throw new Error(`Failed to create verification data to database, ${error}`);
+      throw new Error(`Failed to create verification code data to database, ${error}`);
     }
   },
   async list(params) {

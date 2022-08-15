@@ -1,10 +1,20 @@
 import model from '../models';
 import logger from '../../libs/logger';
 
+const checkEvent = async (event) => {
+  const res = await model.verificationCodes.findOne({ content: event });
+  if (res === null || res.usage !== 'event') {
+    throw new Error('Can not find the event in database');
+  }
+};
+
 const expertCommentsService = {
   async create(params, userID) {
     try {
       const savedParams = params;
+      if (savedParams.event !== '') {
+        await checkEvent(savedParams.event);
+      }
       savedParams.userID = userID;
       const res = await model.expertComments.create(savedParams);
       logger.info('[Expert Comments Service] Create expert comment successfully');
@@ -26,13 +36,6 @@ const expertCommentsService = {
   },
   async update(params, userID) {
     try {
-      const expertComment = await model.expertComments.findById(params._id).lean();
-      // if comment not exists
-      if (!expertComment) {
-        logger.error('[Expert Comments Service] Expert comment not found');
-        throw new Error('Error expert comment not found');
-      }
-      // find expert id and update
       const filter = { _id: params._id, userID };
       const updateParams = params;
       delete updateParams._id;
