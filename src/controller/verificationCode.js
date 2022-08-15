@@ -21,6 +21,9 @@ const verificationCodeController = {
       },
     };
     try {
+      if (req.body.expireAt !== undefined) {
+        req.body.expireAt = new Date(req.body.expireAt);
+      }
       validator.validate(req.body, rule);
       await service.verificationCode.create(req.body);
       logger.info('[Verification Code Controller] Create verification code successfully');
@@ -52,7 +55,8 @@ const verificationCodeController = {
   async update(req, res) {
     const rule = {
       id: {
-
+        type: 'string',
+        allowEmpty: false,
       },
       content: {
         type: 'string',
@@ -66,6 +70,7 @@ const verificationCodeController = {
       },
       expireAt: {
         type: 'date',
+        optional: true,
       },
     };
     try {
@@ -81,12 +86,13 @@ const verificationCodeController = {
   async delete(req, res) {
     try {
       validator.validate(req.body, {
-        _id: {
+        id: {
           type: 'string',
+          allowEmpty: false,
         },
       });
       await service.verificationCode.delete(req.body);
-      logger.info('[Verification Code Controller] Update verification code successfully');
+      logger.info('[Verification Code Controller] Delete verification code successfully');
       res.json({ success: true });
     } catch (error) {
       logger.error('[Verification Code Controller] Failed to delete verification code');

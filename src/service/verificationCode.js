@@ -38,14 +38,8 @@ const verificationCode = {
   },
   async delete(params) {
     try {
-      const verficationCode = await model.verficationCodes.findById(params._id).lean();
-      // if verfication code does not exist
-      if (!verficationCode) {
-        logger.error('[Verification Code Service] Verification code not found');
-        throw new Error('Error verification code not found');
-      }
-      const filter = { _id: params._id };
-      const res = await model.verificationCode.deleteOne(filter);
+      const filter = { _id: params.id };
+      const res = await model.verificationCodes.deleteOne(filter);
       return res;
     } catch (error) {
       logger.error('[Verification Code Service] Failed to delete verification code');

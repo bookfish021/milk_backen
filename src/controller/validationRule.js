@@ -125,6 +125,7 @@ const normalCommentsRule = {
   event: {
     type: 'string',
     optional: true,
+    allowEmpty: false,
   },
   color: {
     type: 'string',

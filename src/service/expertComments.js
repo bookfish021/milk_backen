@@ -12,7 +12,7 @@ const expertCommentsService = {
   async create(params, userID) {
     try {
       const savedParams = params;
-      if (savedParams.event !== '') {
+      if (savedParams.event !== undefined) {
         await checkEvent(savedParams.event);
       }
       savedParams.userID = userID;
