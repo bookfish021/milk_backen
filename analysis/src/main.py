@@ -2,7 +2,6 @@ from util.analysis import Analysis
 from util.connect_mongo import Mongodb
 from dotenv import dotenv_values
 import json
-import os
 
 if __name__ == '__main__':
     config = dotenv_values('./.env.dev')

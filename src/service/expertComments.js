@@ -26,7 +26,11 @@ const expertCommentsService = {
   },
   async list(params, userID) {
     try {
-      const res = await model.expertComments.find({ userID }, null, { limit: params.limit, skip: params.skip });
+      const filter = {
+        userID,
+        createdAt: { $gte: params.startDate, $lte: params.endDate },
+      };
+      const res = await model.expertComments.find(filter, null, { limit: params.limit, skip: params.skip });
       logger.info('[Expert Comments Service] List expert comments successfully');
       return res;
     } catch (error) {

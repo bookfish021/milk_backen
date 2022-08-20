@@ -26,7 +26,11 @@ const normalCommentsService = {
   },
   async list(params, userID) {
     try {
-      const res = await model.normalComments.find({ userID }, null, { limit: params.limit, skip: params.skip });
+      const filter = {
+        userID,
+        createdAt: { $gte: params.startDate, $lte: params.endDate },
+      };
+      const res = await model.normalComments.find(filter, null, { limit: params.limit, skip: params.skip });
       logger.info('[Normal Comments Service] List normal comments successfully');
       return res;
     } catch (error) {

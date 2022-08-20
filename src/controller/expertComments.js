@@ -24,9 +24,17 @@ const expertCommentsController = {
       limit: {
         type: 'number',
       },
+      startDate: {
+        type: 'date',
+      },
+      endDate: {
+        type: 'date',
+      },
     };
 
     try {
+      req.body.startDate = new Date(req.body.startDate);
+      req.body.endDate = new Date(req.body.endDate);
       validator.validate(req.body, rule);
       const expertComments = await service.expertComments.list(req.body, req.user._id);
       logger.info('[Expert Comments Controller] List expert comments successfully');
