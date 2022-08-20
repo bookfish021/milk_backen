@@ -50,6 +50,16 @@ const userController = {
       res.status(400).json({ message: `Failed to register, ${error}` });
     }
   },
+  async get(req, res) {
+    try {
+      const user = await service.user.get(req.user._id);
+      logger.info('[User Controller] Get successfully');
+      res.json({ user });
+    } catch (error) {
+      logger.error('[User Controller] Failed to get user: ', error);
+      res.status(400).json({ message: `Failed to get user, ${error}` });
+    }
+  },
   async list(req, res) {
     const rule = {
       skip: {

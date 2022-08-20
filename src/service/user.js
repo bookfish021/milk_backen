@@ -21,6 +21,17 @@ const userService = {
       throw new Error(`Failed to create user to database, ${error}`);
     }
   },
+  async get(id) {
+    try {
+      const res = await model.users.findOne({ _id: id }).lean();
+      logger.info('[User Service] Get user successfully');
+      delete res.password;
+      return res;
+    } catch (error) {
+      logger.error('[User Service] Failed to get user in database:', error);
+      throw new Error(`Failed to get user in database, ${error}`);
+    }
+  },
   async list(params) {
     try {
       const res = await model.users.find({}, null, { limit: params.limit, skip: params.skip });
