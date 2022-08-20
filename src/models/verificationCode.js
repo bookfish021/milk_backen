@@ -19,6 +19,10 @@ const verificationCodeSchema = new mongoose.Schema({
       return date;
     },
   },
+  startAt: {
+    type: Date,
+    required: false,
+  },
 }, {
   strict: 'throw',
   timestamps: true,
