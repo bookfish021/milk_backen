@@ -1,19 +1,13 @@
 import model from '../models';
 import logger from '../../libs/logger';
-
-const checkEvent = async (event) => {
-  const res = await model.verificationCodes.findOne({ content: event });
-  if (res === null || res.usage !== 'event') {
-    throw new Error('Can not find the event in database');
-  }
-};
+import verificationCode from './verificationCode';
 
 const normalCommentsService = {
   async create(params, userID) {
     try {
       const savedParams = params;
       if (savedParams.event !== undefined) {
-        await checkEvent(savedParams.event);
+        await verificationCode.verify(savedParams.event, 'event');
       }
       savedParams.userID = userID;
       const res = await model.normalComments.create(savedParams);

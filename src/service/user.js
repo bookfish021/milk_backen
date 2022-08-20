@@ -1,20 +1,14 @@
 import argon2 from 'argon2';
 import model from '../models';
 import logger from '../../libs/logger';
-
-const checkVerificationCode = async (verificationCode) => {
-  const res = await model.verificationCodes.findOne({ content: verificationCode });
-  if (res === null || res.usage !== 'expert') {
-    throw new Error('Can not find the verification code in database');
-  }
-};
+import verificationCode from './verificationCode';
 
 const userService = {
   async create(params) {
     try {
       const savedParams = params;
       if (savedParams.role === 'expert') {
-        await checkVerificationCode(savedParams.verificationCode);
+        await verificationCode.verify(savedParams.verificationCode, 'expert');
         delete savedParams.verificationCode;
       }
       const hash = await argon2.hash(params.password);

@@ -46,6 +46,19 @@ const verificationCode = {
       throw new Error(`Failed to delete verification code, ${error}`);
     }
   },
+
+  async verify(content, usage) {
+    const res = await model.verificationCodes.findOne({ content });
+    if (res === null || res.usage !== usage) {
+      throw new Error('Can not find the verification code in database');
+    }
+    if (res.startAt !== undefined) {
+      const curTime = new Date();
+      if (curTime < res.startAt) {
+        throw new Error('Invalid verification code');
+      }
+    }
+  },
 };
 
 export default verificationCode;
