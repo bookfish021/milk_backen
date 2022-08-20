@@ -19,7 +19,7 @@ const SessionService = {
 
     const token = jwt.sign(payload, config.jwtSecretKey);
     logger.info('User login successfully');
-    return { token };
+    return { token, role: user.role, id: user._id };
   },
 };
 
