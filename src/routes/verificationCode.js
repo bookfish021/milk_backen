@@ -9,5 +9,6 @@ verificationCodeRouter.post('/create', [authentication(), admin], controller.ver
 verificationCodeRouter.post('/list', [authentication(), admin], controller.verificationCode.list);
 verificationCodeRouter.put('/update', [authentication(), admin], controller.verificationCode.update);
 verificationCodeRouter.delete('/delete', [authentication(), admin], controller.verificationCode.delete);
+verificationCodeRouter.post('/verifyEventCode', authentication(), controller.verificationCode.verifyEventCode);
 
 export default verificationCodeRouter;

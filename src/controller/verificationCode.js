@@ -106,6 +106,21 @@ const verificationCodeController = {
       res.status(400).json({ message: `Failed to delete verification code, ${error}` });
     }
   },
+  async verifyEventCode(req, res) {
+    try {
+      validator.validate(req.body, {
+        event: {
+          type: 'string',
+          allowEmpty: false,
+        },
+      });
+      await service.verificationCode.verify(req.body.event, 'event');
+      res.json({ success: true });
+    } catch (error) {
+      logger.error('[Verification Code Controller] Failed to verify verification code');
+      res.status(400).json({ message: `Verification code does not exist, ${error}` });
+    }
+  },
 };
 
 export default verificationCodeController;
