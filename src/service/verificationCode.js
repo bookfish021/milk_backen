@@ -48,7 +48,7 @@ const verificationCode = {
   },
 
   async verify(content, usage) {
-    const res = await model.verificationCodes.findOne({ content });
+    const res = await model.verificationCodes.findOne({ content }).lean();
     if (res === null || res.usage !== usage) {
       throw new Error('Can not find the verification code in database');
     }

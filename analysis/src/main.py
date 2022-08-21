@@ -9,8 +9,10 @@ if __name__ == '__main__':
     mongoURI = config['MONGO_SCHEME'] + '://' + config['MONGO_USERNAME'] + ':' + config['MONGO_PASSWORD'] + '@' + config['MONGO_HOST'] + ':' + config['MONGO_PORT'] + '/' + config['MONGO_DATABASE'] + '?authSource=admin'
     Mongodb.initialize(mongoURI, config['MONGO_DATABASE'])
     a = Analysis('expertcomments')
-    results = a.cal_all_avg()
-    
+    start = input('enter start time (YYYY-MM-DD): ')
+    end = input('enter end time (YYYY-MM-DD): ')
+    results = a.cal_all_avg(start, end)
+
     d = dict()
     for result in results:
         d[result['_id']] = dict()
