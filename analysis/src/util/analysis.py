@@ -23,11 +23,14 @@ class Analysis(object):
         end = datetime.strptime(end, '%Y-%m-%d')
         
         match = {
-            'createdAt': {
-                '$gte':start,
-                '$lte':end,
-            },
+            '$match': {
+                'createdAt': {
+                    '$gte': start,
+                    '$lt': end,
+                }
+            }
         }
+        pipeline.append(match)
 
         group = {
             '$group': {
