@@ -79,8 +79,18 @@ const verificationCodeController = {
         type: 'date',
         optional: true,
       },
+      startAt: {
+        type: 'date',
+        optional: true,
+      },
     };
     try {
+      if (req.body.expireAt !== undefined) {
+        req.body.expireAt = new Date(req.body.expireAt);
+      }
+      if (req.body.startAt !== undefined) {
+        req.body.startAt = new Date(req.body.startAt);
+      }
       validator.validate(req.body, rule);
       await service.verificationCode.update(req.body);
       logger.info('[Verification Code Controller] Update verification code successfully');
