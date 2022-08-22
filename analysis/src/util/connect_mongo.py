@@ -21,12 +21,12 @@ class Mongodb(object):
         Mongodb.DATABASE[collection].insert_many(datas)
 
     @staticmethod
-    def find_one(collection, filter):
-        return Mongodb.DATABASE[collection].find_one(filter)
+    def find_one(collection, filter, projection=None):
+        return Mongodb.DATABASE[collection].find_one(filter, projection)
         
     @staticmethod
-    def find(collection, filter):
-        return Mongodb.DATABASE[collection].find(filter)
+    def find(collection, filter=None, projection=None):
+        return Mongodb.DATABASE[collection].find(filter, projection)
         
     @staticmethod
     def update_one(collection, filter, data):
