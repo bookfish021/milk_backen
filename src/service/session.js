@@ -13,7 +13,7 @@ const SessionService = {
 
     const payload = {
       _id: user._id,
-      username: params.username,
+      username: user.username,
       role: user.role,
     };
 

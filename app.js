@@ -6,7 +6,6 @@ import connectMongo from './libs/connect_mongo';
 import router from './src/routes';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
-
 const app = express();
 
 app.use(cors());
