@@ -58,63 +58,93 @@ const expertCommentsSchema = new mongoose.Schema({
     required: true,
   },
   aromaPositive: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   flavorPositive: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   sweetnessPositive: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   bodyPositive: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   texturePositive: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   aftertastePositive: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   balancePositive: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   aromaNegative: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   flavorNegative: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   sweetnessNegative: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   bodyNegative: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   textureNegative: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   aftertasteNegative: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   balanceNegative: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
   defectNegative: {
-    type: String,
+    type: [{
+      type: String,
+    }],
     required: true,
   },
 }, {
