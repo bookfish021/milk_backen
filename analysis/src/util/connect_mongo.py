@@ -43,3 +43,7 @@ class Mongodb(object):
     @staticmethod
     def aggregate(collection, pipeline):
         return Mongodb.DATABASE[collection].aggregate(pipeline)
+    
+    @staticmethod
+    def distinct(collection, field):
+        return Mongodb.DATABASE[collection].distinct(field)
