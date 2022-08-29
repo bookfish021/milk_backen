@@ -1,4 +1,5 @@
 from util.connect_mongo import Mongodb
+import random
 
 class Comment(object):
     TERMS = [
@@ -25,29 +26,33 @@ class Comment(object):
     def __get(self, filter=None, projection=None):
         return Mongodb.find(self.__collection, filter, projection)
     
-    def getPositiveComments(self, productName=None, num=5):
+    def __getOne(self, filter=None, projection=None):
+        return Mongodb.find_one(self.__collection, filter, projection)
+    
+    def getProductName(self):
+        return Mongodb.distinct(self.__collection, 'productName')
+    
+    def getRandomNumberComments(self, isPos=True, productName=None, num=5):
         projection = dict()
         filter = None
         
         if productName is not None:
             filter = dict()
             filter['productName'] = productName
+            
+        evaluation = 'Positive' if isPos is True else 'Negative'
         
         projection['productName'] = 1
         for term in Comment.TERMS:
-            projection[term + 'Positive'] = 1
-        
-        result = self.__get(filter=filter, projection=projection)
+            projection[term + evaluation] = 1
 
-        return result.limit(num)
-    
-    def getNegativeComments(self, num=5):
-        projection = dict()
-        
-        projection['productName'] = 1
-        for term in Comment.TERMS:
-            projection[term + 'Negative'] = 1
-        
-        result = self.__get(projection=projection)
-
-        return result.limit(num)
+        comments = list()
+        results = list(self.__get(filter=filter, projection=projection))
+        count = len(results)
+        for i in range(num):
+            skip = random.randint(0, count-1)
+            result = results[skip]
+            for term in Comment.TERMS:
+                comments.extend(result[term + evaluation])
+                
+        return comments

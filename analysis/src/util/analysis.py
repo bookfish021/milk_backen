@@ -31,11 +31,32 @@ class Analysis(object):
     
         return Mongodb.aggregate(self.__collection, pipeline)
       
-    def cal_avg(self, match=None):
+    def cal_avg(self, productName, start=None, end=None):
         pipeline = list()
+        match = dict()
+        
+        match = {
+            '$match': {
+                'productName': productName
+            }
+        }
+        
+        if start is not None and end is not None:
+            startTime = datetime.strptime(start, '%Y-%m-%d')
+            endTime = datetime.strptime(end, '%Y-%m-%d')
+            match['$match']['createdAt'] = dict()
+            match['$match']['createdAt']['$get'] = startTime
+            match['$match']['createdAt']['$lt'] = endTime
+        elif start is not None:
+            startTime = datetime.strptime(start, '%Y-%m-%d')
+            match['$match']['createdAt'] = dict()
+            match['$match']['createdAt']['$get'] = startTime
+        elif (end is not None):
+            endTime = datetime.strptime(end, '%Y-%m-%d')
+            match['$match']['createdAt'] = dict()
+            match['$match']['createdAt']['$lt'] = endTime
 
-        if match is not None:
-            pipeline.append(match)
+        pipeline.append(match)
         
         group = {
             '$group': {
