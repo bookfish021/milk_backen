@@ -7,7 +7,7 @@ const expertCommentsService = {
     try {
       const savedParams = params;
       if (savedParams.event !== undefined) {
-        await verificationCode.checkEvent(savedParams.event, 'event');
+        await verificationCode.verify(savedParams.event, 'event');
       }
       savedParams.userID = userID;
       const res = await model.expertComments.create(savedParams);
