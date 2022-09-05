@@ -96,11 +96,30 @@ const userController = {
     try {
       validator.validate(req.body, rule);
       await service.user.updatePassword(req.body, req.user._id);
-      logger.info('[User Controller] Update password successfully');
+      logger.info('[User Controller] Update user password successfully');
       res.json({ success: true });
     } catch (error) {
       logger.error('[User Controller] Failed to update user password:', error);
       res.status(400).json({ message: `Failed to update user password, ${error}` });
+    }
+  },
+  async setPassword(req, res) {
+    const rule = {
+      newPassword: {
+        type: 'string',
+        allowEmpty: false,
+        min: 4,
+      },
+    };
+
+    try {
+      validator.validate(req.body, rule);
+      await service.user.setPassword(req.body, req.user._id);
+      logger.info('[User Controller] Set user password successfully');
+      res.json({ success: true });
+    } catch (error) {
+      logger.error('[User Controller] Failed to set user password:', error);
+      res.status(400).json({ message: `Failed to set user password, ${error}` });
     }
   },
 };

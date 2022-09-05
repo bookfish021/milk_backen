@@ -9,5 +9,6 @@ userRouter.post('/register', controller.user.register);
 userRouter.post('/get', authentication(), controller.user.get);
 userRouter.post('/list', [authentication(), admin], controller.user.list);
 userRouter.put('/update', authentication(), controller.user.updatePassword);
+userRouter.put('/set', [authentication(), admin], controller.user.setPassword);
 
 export default userRouter;

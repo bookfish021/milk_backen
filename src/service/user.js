@@ -57,9 +57,9 @@ const userService = {
         throw new Error('User password was incorrect');
       }
       // find user id and update password
-      const hashdPassword = await argon2.hash(params.newPassword);
+      const hashedPassword = await argon2.hash(params.newPassword);
       const filter = { _id: id };
-      const update = { password: hashdPassword };
+      const update = { password: hashedPassword };
       const res = await model.users.findOneAndUpdate(filter, update, {
         new: true,
       });
@@ -67,6 +67,20 @@ const userService = {
     } catch (error) {
       logger.error('[User Service] Failed to update user password:', error);
       throw new Error(`Failed to update user password, ${error}`);
+    }
+  },
+  async setPassword(params) {
+    try {
+      const hashedPassword = await argon2.hash(params.newPassword);
+      const filter = { account: params.account };
+      const update = { password: hashedPassword };
+      const res = await model.users.findOneAndUpdate(filter, update, {
+        new: true,
+      });
+      return res;
+    } catch (error) {
+      logger.error('[User Service] Failed to set user password:', error);
+      throw new Error(`Failed to set user password, ${error}`);
     }
   },
 };
