@@ -17,7 +17,11 @@ const SessionService = {
       role: user.role,
     };
 
-    const token = jwt.sign(payload, config.jwtSecretKey);
+    const options = {
+      expiresIn: '2 days',
+    };
+
+    const token = jwt.sign(payload, config.jwtSecretKey, options);
     logger.info('User login successfully');
     return { token, role: user.role, id: user._id };
   },
