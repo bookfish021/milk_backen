@@ -18,7 +18,7 @@ const SessionService = {
     };
 
     const options = {
-      expiresIn: "10h"
+      expiresIn: '2 days',
     };
 
     const token = jwt.sign(payload, config.jwtSecretKey, options);
