@@ -57,6 +57,10 @@ const expertCommentsSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  overallScore: {
+    type: Number,
+    required: true,
+  },
   aromaPositive: {
     type: [{
       type: String,
