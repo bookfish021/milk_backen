@@ -6,6 +6,7 @@ const normalCommentsService = {
   async create(params, userID) {
     try {
       const savedParams = params;
+      logger.info(savedParams.event);
       if (savedParams.event !== undefined) {
         await verificationCode.verify(savedParams.event, 'event');
       }
@@ -20,6 +21,7 @@ const normalCommentsService = {
   },
   async list(params, userID) {
     try {
+      logger.info(userID);
       const filter = {
         userID,
         createdAt: { $gte: params.startDate, $lte: params.endDate },

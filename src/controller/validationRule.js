@@ -52,6 +52,10 @@ const expertCommentsRule = {
     type: 'number',
     allowEmpty: false,
   },
+  overallScore: {
+    type: 'number',
+    allowEmpty: false,
+  },
   aromaPositive: {
     type: 'array',
     items: 'string',
@@ -180,6 +184,10 @@ const normalCommentsRule = {
     allowEmpty: false,
   },
   defectScore: {
+    type: 'number',
+    allowEmpty: false,
+  },
+  overallScore: {
     type: 'number',
     allowEmpty: false,
   },
