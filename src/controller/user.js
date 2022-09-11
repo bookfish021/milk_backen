@@ -103,23 +103,25 @@ const userController = {
       res.status(400).json({ message: `Failed to update user password, ${error}` });
     }
   },
-  async setPassword(req, res) {
+  async resetPassword(req, res) {
     const rule = {
-      newPassword: {
+      account: {
         type: 'string',
         allowEmpty: false,
-        min: 4,
       },
     };
 
     try {
       validator.validate(req.body, rule);
-      await service.user.setPassword(req.body, req.user._id);
-      logger.info('[User Controller] Set user password successfully');
+      const user = await service.user.resetPassword(req.body);
+      logger.info('[User Controller] Reset user password successfully');
+      if (user == null) {
+        throw new Error('User not existed');
+      }
       res.json({ success: true });
     } catch (error) {
-      logger.error('[User Controller] Failed to set user password:', error);
-      res.status(400).json({ message: `Failed to set user password, ${error}` });
+      logger.error('[User Controller] Failed to reset user password:', error);
+      res.status(400).json({ message: `Failed to reset user password, ${error}` });
     }
   },
 };
